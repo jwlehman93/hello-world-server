@@ -70,6 +70,11 @@ create file `index.js` and add the following:
 * open new terminal and run `mongo`
 * type `help` to see what you can do
 
+--
+###configs
+* create file `.env`
+Add the following:
+![env](./env.png "env vars")
 
 
 
