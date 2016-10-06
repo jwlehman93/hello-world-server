@@ -1,8 +1,5 @@
 # Creating an express server
 
-
-
-
 ###Starting a Node project
 Run `npm init`
 It should look similar to this:
