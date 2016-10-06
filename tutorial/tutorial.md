@@ -33,8 +33,27 @@ https://github.com/Purdue-ACM-SIGAPP/hello-world-server.git`
 
 ###package.json
 `cat package.json`
-![package.json](./package_json.png "package.json")
-
+```
+{
+  "name": "hello-world-server",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Purdue-ACM-SIGAPP/hello-world-server.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Purdue-ACM-SIGAPP/hello-world-server/issues"
+  },
+  "homepage": "https://github.com/Purdue-ACM-SIGAPP/hello-world-server#readme"
+}
+```
 --
 ###Install express
 `npm i -S express`
@@ -42,8 +61,20 @@ https://github.com/Purdue-ACM-SIGAPP/hello-world-server.git`
 --
 ###Create your first server!
 create file `index.js` and add the following:
-![express initial](./express_init.png "express!!!!!")
+```javascript
+var express = require('express')
 
+var app = express();
+
+app.get('/'), function(req, res) {
+  res.send('Hello, World')
+});
+
+app.listen(3000, function() {
+  console.log('Listening on port 3000');
+});
+module.exports = app;
+```
 --
 ###Run your server!
 `node index.js`
@@ -51,10 +82,36 @@ create file `index.js` and add the following:
 ###Adding routes
 * `mkdir -p app/routes`
 * create file `index.js` and add the following:
-![routes initial](./route_init.png "routes!")
 
+```javascript
+var express = require('express')
+
+var app = express();
+
+app.get('/'), function(req, res) {
+  res.send('Hello, World')
+});
+
+router.get('/message', function(req, res) {
+  rese.send('You asked for a message, so now you have got one!');
+});
+```
 --
 
+###Add to index.js
+```javascript
+var express = require('express')
+var routes = require('./app/routes');
+var app = express();
+
+app.use('/', routes)
+
+app.listen(3000, function() {
+  console.log('Listening on port 3000');
+});
+module.exports = app;
+```
+--
 #MongoDB
 ##https://www.mongodb.com/download-center?jmp=nav#community
 
@@ -77,13 +134,35 @@ create file `index.js` and add the following:
 ###configs
 * create file `.env`
 * Add the following:
-![env](./env.png "env vars")
+
+```
+PORT=XXXX
+MONGODB=localhost:XXXXX/DB
+```
 --
 
 ###Connect Mongo and the Server using mongoose
-*  `npm i -S mongoose dotenv bodyparser`
+* `npm i -S mongoose dotenv bodyparser`
 * Add the following to index.js
-![mongo](./mongo_init.png "mongo")
+
+```javascript
+require('dontenv').config();
+/*other requires*/
+var mongoose = require('mongoose');
+var bodyParser = require('body-parser');
+/* express, routes, etc */
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({extended: false}));
+
+var connection = mongoose.connect(process.env.MONGODB).connection;
+
+connection.on('error', console.error.bind(console, 'connection error'));
+connection.once('open', function() {
+  console.log('MongoDB is now connected');
+})
+/*app.listen, export*/
+```
+
 --
 ###Run it
 `node server.js`
@@ -92,14 +171,35 @@ create file `index.js` and add the following:
 * `mkdir app/models`
 * create file `Message.js`
 * add the following: 
-![message.js](./message_model.png "Message.js")
+
+```javascript
+var mongoose = require('mongoose');
+var Schema = mongoose.Schema;
+
+var messageSchema = new Schema({
+  message: {type: String, required: true},
+  room: {type: String, required: true},
+  user: {type: String, required: true}
+});
+
+module.exports = mongoose.model('Message', messageSchema);
+```
 --
 
 ###Add messages
 * open `routes/index.js`
 * add the following
-![add message](./post_message.png "Post message")
 
+```javascript
+router.post('/messages', function(req, res, next) {
+  Message(req.body).save(function(err) {
+    if (err) {
+      res.send(err);
+    }
+    res.send('Message saved');
+  })
+});
+```
 --
 ###Test it out
 * Download postman
@@ -124,9 +224,19 @@ create file `index.js` and add the following:
 ###Get messages
 * open `routes/index.js` again
 * add the following (also remove our old `/message` route)
-![get messages](./get_messages.png "Get messages")
 
+```javascript
+router.get('/messages', function(req, res, next) {
+  Message.find(function(err, messages) {
+    if (err) {
+      res.send(err);
+    }
+    res.send(messages);
+  })
+});
+```
 
+--
 ###Check it out
 * node `index.js`
 * go to `localhost:PORT/messages`
@@ -135,5 +245,10 @@ create file `index.js` and add the following:
 ###Last thing... Let's add a logger
 * `npm i -S morgan`
 * add the following to index.js
-![logger](./logger.png "Logger")
+
+```javascript
+var logger = require('morgan');
+/*app stuff */
+app.use(logger('dev'));
+```
 

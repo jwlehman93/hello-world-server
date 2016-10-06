@@ -672,8 +672,26 @@ https://github.com/Purdue-ACM-SIGAPP/hello-world-server.git</code></p>
   </div>
   <div class="slide hidden" id="slide-5">
     <section class="slide-content"><h3 id="package-json">package.json</h3>
-<p><code>cat package.json</code>
-<img src="./package_json.png" alt="package.json" title="package.json"></p>
+<p><code>cat package.json</code></p>
+<pre><code>{
+  &quot;name&quot;: &quot;hello-world-server&quot;,
+  &quot;version&quot;: &quot;1.0.0&quot;,
+  &quot;description&quot;: &quot;&quot;,
+  &quot;main&quot;: &quot;index.js&quot;,
+  &quot;scripts&quot;: {
+    &quot;test&quot;: &quot;echo \&quot;Error: no test specified\&quot; &amp;&amp; exit 1&quot;
+  },
+  &quot;repository&quot;: {
+    &quot;type&quot;: &quot;git&quot;,
+    &quot;url&quot;: &quot;git+https://github.com/Purdue-ACM-SIGAPP/hello-world-server.git&quot;
+  },
+  &quot;author&quot;: &quot;&quot;,
+  &quot;license&quot;: &quot;ISC&quot;,
+  &quot;bugs&quot;: {
+    &quot;url&quot;: &quot;https://github.com/Purdue-ACM-SIGAPP/hello-world-server/issues&quot;
+  },
+  &quot;homepage&quot;: &quot;https://github.com/Purdue-ACM-SIGAPP/hello-world-server#readme&quot;
+}</code></pre>
 </section>
   </div>
   <div class="slide hidden" id="slide-6">
@@ -683,8 +701,19 @@ https://github.com/Purdue-ACM-SIGAPP/hello-world-server.git</code></p>
   </div>
   <div class="slide hidden" id="slide-7">
     <section class="slide-content"><h3 id="create-your-first-server-">Create your first server!</h3>
-<p>create file <code>index.js</code> and add the following:
-<img src="./express_init.png" alt="express initial" title="express!!!!!"></p>
+<p>create file <code>index.js</code> and add the following:</p>
+<pre><code class="lang-javascript"><span class="hljs-keyword">var</span> express = <span class="hljs-built_in">require</span>(<span class="hljs-string">'express'</span>)
+
+<span class="hljs-keyword">var</span> app = express();
+
+app.get(<span class="hljs-string">'/'</span>), <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">req, res</span>) </span>{
+  res.send(<span class="hljs-string">'Hello, World'</span>)
+});
+
+app.listen(<span class="hljs-number">3000</span>, <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>{
+  <span class="hljs-built_in">console</span>.log(<span class="hljs-string">'Listening on port 3000'</span>);
+});
+<span class="hljs-built_in">module</span>.exports = app;</code></pre>
 </section>
   </div>
   <div class="slide hidden" id="slide-8">
@@ -696,17 +725,41 @@ https://github.com/Purdue-ACM-SIGAPP/hello-world-server.git</code></p>
     <section class="slide-content"><h3 id="adding-routes">Adding routes</h3>
 <ul>
 <li><code>mkdir -p app/routes</code></li>
-<li>create file <code>index.js</code> and add the following:
-<img src="./route_init.png" alt="routes initial" title="routes!"></li>
+<li>create file <code>index.js</code> and add the following:</li>
 </ul>
+<pre><code class="lang-javascript"><span class="hljs-keyword">var</span> express = <span class="hljs-built_in">require</span>(<span class="hljs-string">'express'</span>)
+
+<span class="hljs-keyword">var</span> app = express();
+
+app.get(<span class="hljs-string">'/'</span>), <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">req, res</span>) </span>{
+  res.send(<span class="hljs-string">'Hello, World'</span>)
+});
+
+router.get(<span class="hljs-string">'/message'</span>, <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">req, res</span>) </span>{
+  rese.send(<span class="hljs-string">'You asked for a message, so now you have got one!'</span>);
+});</code></pre>
 </section>
   </div>
   <div class="slide hidden" id="slide-10">
-    <section class="slide-content"><h1 id="mongodb">MongoDB</h1>
-<h2 id="-https-www-mongodb-com-download-center-jmp-nav-community-"><a href="https://www.mongodb.com/download-center?jmp=nav#community"></a></h2>
+    <section class="slide-content"><h3 id="add-to-index-js">Add to index.js</h3>
+<pre><code class="lang-javascript"><span class="hljs-keyword">var</span> express = <span class="hljs-built_in">require</span>(<span class="hljs-string">'express'</span>)
+<span class="hljs-keyword">var</span> routes = <span class="hljs-built_in">require</span>(<span class="hljs-string">'./app/routes'</span>);
+<span class="hljs-keyword">var</span> app = express();
+
+app.use(<span class="hljs-string">'/'</span>, routes)
+
+app.listen(<span class="hljs-number">3000</span>, <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>{
+  <span class="hljs-built_in">console</span>.log(<span class="hljs-string">'Listening on port 3000'</span>);
+});
+<span class="hljs-built_in">module</span>.exports = app;</code></pre>
 </section>
   </div>
   <div class="slide hidden" id="slide-11">
+    <section class="slide-content"><h1 id="mongodb">MongoDB</h1>
+<h2 id="https-www-mongodb-com-download-center-jmp-nav-community"><a href="https://www.mongodb.com/download-center?jmp=nav#community">https://www.mongodb.com/download-center?jmp=nav#community</a></h2>
+</section>
+  </div>
+  <div class="slide hidden" id="slide-12">
     <section class="slide-content"><h3 id="create-data-directory">Create data directory</h3>
 <ul>
 <li>mac<ul>
@@ -728,49 +781,80 @@ https://github.com/Purdue-ACM-SIGAPP/hello-world-server.git</code></p>
 </ul>
 </section>
   </div>
-  <div class="slide hidden" id="slide-12">
+  <div class="slide hidden" id="slide-13">
     <section class="slide-content"><h3 id="configs">configs</h3>
 <ul>
 <li>create file <code>.env</code></li>
-<li>Add the following:
-<img src="./env.png" alt="env" title="env vars"></li>
+<li>Add the following:</li>
 </ul>
-</section>
-  </div>
-  <div class="slide hidden" id="slide-13">
-    <section class="slide-content"><h3 id="connect-mongo-and-the-server-using-mongoose">Connect Mongo and the Server using mongoose</h3>
-<ul>
-<li><code>npm i -S mongoose dotenv bodyparser</code></li>
-<li>Add the following to index.js
-<img src="./mongo_init.png" alt="mongo" title="mongo"></li>
-</ul>
+<pre><code>PORT=XXXX
+MONGODB=localhost:XXXXX/DB</code></pre>
 </section>
   </div>
   <div class="slide hidden" id="slide-14">
+    <section class="slide-content"><h3 id="connect-mongo-and-the-server-using-mongoose">Connect Mongo and the Server using mongoose</h3>
+<ul>
+<li><code>npm i -S mongoose dotenv bodyparser</code></li>
+<li>Add the following to index.js</li>
+</ul>
+<pre><code class="lang-javascript"><span class="hljs-built_in">require</span>(<span class="hljs-string">'dontenv'</span>).config();
+<span class="hljs-comment">/*other requires*/</span>
+<span class="hljs-keyword">var</span> mongoose = <span class="hljs-built_in">require</span>(<span class="hljs-string">'mongoose'</span>);
+<span class="hljs-keyword">var</span> bodyParser = <span class="hljs-built_in">require</span>(<span class="hljs-string">'body-parser'</span>);
+<span class="hljs-comment">/* express, routes, etc */</span>
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({extended: <span class="hljs-literal">false</span>}));
+
+<span class="hljs-keyword">var</span> connection = mongoose.connect(process.env.MONGODB).connection;
+
+connection.on(<span class="hljs-string">'error'</span>, <span class="hljs-built_in">console</span>.error.bind(<span class="hljs-built_in">console</span>, <span class="hljs-string">'connection error'</span>));
+connection.once(<span class="hljs-string">'open'</span>, <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>{
+  <span class="hljs-built_in">console</span>.log(<span class="hljs-string">'MongoDB is now connected'</span>);
+})
+<span class="hljs-comment">/*app.listen, export*/</span></code></pre>
+</section>
+  </div>
+  <div class="slide hidden" id="slide-15">
     <section class="slide-content"><h3 id="run-it">Run it</h3>
 <p><code>node server.js</code></p>
 </section>
   </div>
-  <div class="slide hidden" id="slide-15">
+  <div class="slide hidden" id="slide-16">
     <section class="slide-content"><h3 id="create-message-model">Create message model</h3>
 <ul>
 <li><code>mkdir app/models</code></li>
 <li>create file <code>Message.js</code></li>
-<li>add the following: 
-<img src="./message_model.png" alt="message.js" title="Message.js"></li>
+<li>add the following: </li>
 </ul>
-</section>
-  </div>
-  <div class="slide hidden" id="slide-16">
-    <section class="slide-content"><h3 id="add-messages">Add messages</h3>
-<ul>
-<li>open <code>routes/index.js</code></li>
-<li>add the following
-<img src="./post_message.png" alt="add message" title="Post message"></li>
-</ul>
+<pre><code class="lang-javascript"><span class="hljs-keyword">var</span> mongoose = <span class="hljs-built_in">require</span>(<span class="hljs-string">'mongoose'</span>);
+<span class="hljs-keyword">var</span> Schema = mongoose.Schema;
+
+<span class="hljs-keyword">var</span> messageSchema = <span class="hljs-keyword">new</span> Schema({
+  message: {type: <span class="hljs-built_in">String</span>, required: <span class="hljs-literal">true</span>},
+  room: {type: <span class="hljs-built_in">String</span>, required: <span class="hljs-literal">true</span>},
+  user: {type: <span class="hljs-built_in">String</span>, required: <span class="hljs-literal">true</span>}
+});
+
+<span class="hljs-built_in">module</span>.exports = mongoose.model(<span class="hljs-string">'Message'</span>, messageSchema);</code></pre>
 </section>
   </div>
   <div class="slide hidden" id="slide-17">
+    <section class="slide-content"><h3 id="add-messages">Add messages</h3>
+<ul>
+<li>open <code>routes/index.js</code></li>
+<li>add the following</li>
+</ul>
+<pre><code class="lang-javascript">router.post(<span class="hljs-string">'/messages'</span>, <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">req, res, next</span>) </span>{
+  Message(req.body).save(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">err</span>) </span>{
+    <span class="hljs-keyword">if</span> (err) {
+      res.send(err);
+    }
+    res.send(<span class="hljs-string">'Message saved'</span>);
+  })
+});</code></pre>
+</section>
+  </div>
+  <div class="slide hidden" id="slide-18">
     <section class="slide-content"><h3 id="test-it-out">Test it out</h3>
 <ul>
 <li>Download postman</li>
@@ -785,7 +869,7 @@ https://github.com/Purdue-ACM-SIGAPP/hello-world-server.git</code></p>
 </ul>
 </section>
   </div>
-  <div class="slide hidden" id="slide-18">
+  <div class="slide hidden" id="slide-19">
     <section class="slide-content"><h3 id="check-in-mongo">Check in mongo</h3>
 <ul>
 <li>open your mongo shell again</li>
@@ -794,30 +878,42 @@ https://github.com/Purdue-ACM-SIGAPP/hello-world-server.git</code></p>
 </ul>
 </section>
   </div>
-  <div class="slide hidden" id="slide-19">
+  <div class="slide hidden" id="slide-20">
     <section class="slide-content"><h3 id="get-messages">Get messages</h3>
 <ul>
 <li>open <code>routes/index.js</code> again</li>
-<li>add the following (also remove our old <code>/message</code> route)
-<img src="./get_messages.png" alt="get messages" title="Get messages"></li>
+<li>add the following (also remove our old <code>/message</code> route)</li>
 </ul>
-<h3 id="check-it-out">Check it out</h3>
+<pre><code class="lang-javascript">router.get(<span class="hljs-string">'/messages'</span>, <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">req, res, next</span>) </span>{
+  Message.find(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">err, messages</span>) </span>{
+    <span class="hljs-keyword">if</span> (err) {
+      res.send(err);
+    }
+    res.send(messages);
+  })
+});</code></pre>
+</section>
+  </div>
+  <div class="slide hidden" id="slide-21">
+    <section class="slide-content"><h3 id="check-it-out">Check it out</h3>
 <ul>
 <li>node <code>index.js</code></li>
 <li>go to <code>localhost:PORT/messages</code></li>
 </ul>
 </section>
   </div>
-  <div class="slide hidden" id="slide-20">
+  <div class="slide hidden" id="slide-22">
     <section class="slide-content"><h3 id="last-thing-let-s-add-a-logger">Last thing... Let&#39;s add a logger</h3>
 <ul>
 <li><code>npm i -S morgan</code></li>
-<li>add the following to index.js
-<img src="./logger.png" alt="logger" title="Logger"></li>
+<li>add the following to index.js</li>
 </ul>
+<pre><code class="lang-javascript"><span class="hljs-keyword">var</span> logger = <span class="hljs-built_in">require</span>(<span class="hljs-string">'morgan'</span>);
+<span class="hljs-comment">/*app stuff */</span>
+app.use(logger(<span class="hljs-string">'dev'</span>));</code></pre>
 </section>
   </div>
-  <div class="slide hidden author-slide" id="slide-21">
+  <div class="slide hidden author-slide" id="slide-23">
     <section class="slide-content"><div class="author">
   <h1 class="name">Jeremy Lehman</h1>
     <h3 class="twitter">
