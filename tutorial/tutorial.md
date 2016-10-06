@@ -41,9 +41,17 @@ https://github.com/Purdue-ACM-SIGAPP/hello-world-server.git`
 
 --
 ###Create your first server!
+create file `index.js` and add the following:
 ![express initial](./express_init.png "express!!!!!")
 
 --
+###Adding routes
+`mkdir -p app/routes`
+create file `index.js` and add the following:
+![routes initial](./route_init.png "routes!")
+
+--
+
 
 
 
