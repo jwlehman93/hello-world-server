@@ -683,13 +683,141 @@ https://github.com/Purdue-ACM-SIGAPP/hello-world-server.git</code></p>
   </div>
   <div class="slide hidden" id="slide-7">
     <section class="slide-content"><h3 id="create-your-first-server-">Create your first server!</h3>
-<p><img src="./express_init.png" alt="express initial" title="express!!!!!"></p>
+<p>create file <code>index.js</code> and add the following:
+<img src="./express_init.png" alt="express initial" title="express!!!!!"></p>
 </section>
   </div>
   <div class="slide hidden" id="slide-8">
-    <section class="slide-content"></section>
+    <section class="slide-content"><h3 id="run-your-server-">Run your server!</h3>
+<p><code>node index.js</code></p>
+</section>
   </div>
-  <div class="slide hidden author-slide" id="slide-9">
+  <div class="slide hidden" id="slide-9">
+    <section class="slide-content"><h3 id="adding-routes">Adding routes</h3>
+<ul>
+<li><code>mkdir -p app/routes</code></li>
+<li>create file <code>index.js</code> and add the following:
+<img src="./route_init.png" alt="routes initial" title="routes!"></li>
+</ul>
+</section>
+  </div>
+  <div class="slide hidden" id="slide-10">
+    <section class="slide-content"><h1 id="mongodb">MongoDB</h1>
+<h2 id="-https-www-mongodb-com-download-center-jmp-nav-community-"><a href="https://www.mongodb.com/download-center?jmp=nav#community"></a></h2>
+</section>
+  </div>
+  <div class="slide hidden" id="slide-11">
+    <section class="slide-content"><h3 id="create-data-directory">Create data directory</h3>
+<ul>
+<li>mac<ul>
+<li><code>mkdir /data/db</code></li>
+<li><code>sudo chmod 0755 /data/db</code></li>
+<li><code>sudo chown $USER /data/db</code></li>
+</ul>
+</li>
+<li>windows<ul>
+<li><code>md /data/db</code></li>
+</ul>
+</li>
+</ul>
+<h3 id="starting-the-mongo-service-and-connecting-to-it">Starting the mongo service and connecting to it</h3>
+<ul>
+<li><code>mongod</code> in a terminal</li>
+<li>open new terminal and run <code>mongo</code></li>
+<li>type <code>help</code> to see what you can do</li>
+</ul>
+</section>
+  </div>
+  <div class="slide hidden" id="slide-12">
+    <section class="slide-content"><h3 id="configs">configs</h3>
+<ul>
+<li>create file <code>.env</code></li>
+<li>Add the following:
+<img src="./env.png" alt="env" title="env vars"></li>
+</ul>
+</section>
+  </div>
+  <div class="slide hidden" id="slide-13">
+    <section class="slide-content"><h3 id="connect-mongo-and-the-server-using-mongoose">Connect Mongo and the Server using mongoose</h3>
+<ul>
+<li><code>npm i -S mongoose dotenv bodyparser</code></li>
+<li>Add the following to index.js
+<img src="./mongo_init.png" alt="mongo" title="mongo"></li>
+</ul>
+</section>
+  </div>
+  <div class="slide hidden" id="slide-14">
+    <section class="slide-content"><h3 id="run-it">Run it</h3>
+<p><code>node server.js</code></p>
+</section>
+  </div>
+  <div class="slide hidden" id="slide-15">
+    <section class="slide-content"><h3 id="create-message-model">Create message model</h3>
+<ul>
+<li><code>mkdir app/models</code></li>
+<li>create file <code>Message.js</code></li>
+<li>add the following: 
+<img src="./message_model.png" alt="message.js" title="Message.js"></li>
+</ul>
+</section>
+  </div>
+  <div class="slide hidden" id="slide-16">
+    <section class="slide-content"><h3 id="add-messages">Add messages</h3>
+<ul>
+<li>open <code>routes/index.js</code></li>
+<li>add the following
+<img src="./post_message.png" alt="add message" title="Post message"></li>
+</ul>
+</section>
+  </div>
+  <div class="slide hidden" id="slide-17">
+    <section class="slide-content"><h3 id="test-it-out">Test it out</h3>
+<ul>
+<li>Download postman</li>
+<li>make a post request to <code>localhost:PORT/messages</code></li>
+<li>in the body tab select raw and JSON</li>
+<li>add the following json data<pre><code>{
+&quot;message&quot;: &quot;Hello&quot;,
+&quot;user&quot;: &quot;jeremy&quot;,
+&quot;room&quot;: &quot;Hello, World&quot;
+}</code></pre>
+</li>
+</ul>
+</section>
+  </div>
+  <div class="slide hidden" id="slide-18">
+    <section class="slide-content"><h3 id="check-in-mongo">Check in mongo</h3>
+<ul>
+<li>open your mongo shell again</li>
+<li>type <code>use &lt;DB&gt;</code></li>
+<li>type <code>db.messages.find()</code></li>
+</ul>
+</section>
+  </div>
+  <div class="slide hidden" id="slide-19">
+    <section class="slide-content"><h3 id="get-messages">Get messages</h3>
+<ul>
+<li>open <code>routes/index.js</code> again</li>
+<li>add the following (also remove our old <code>/message</code> route)
+<img src="./get_messages.png" alt="get messages" title="Get messages"></li>
+</ul>
+<h3 id="check-it-out">Check it out</h3>
+<ul>
+<li>node <code>index.js</code></li>
+<li>go to <code>localhost:PORT/messages</code></li>
+</ul>
+</section>
+  </div>
+  <div class="slide hidden" id="slide-20">
+    <section class="slide-content"><h3 id="last-thing-let-s-add-a-logger">Last thing... Let&#39;s add a logger</h3>
+<ul>
+<li><code>npm i -S morgan</code></li>
+<li>add the following to index.js
+<img src="./logger.png" alt="logger" title="Logger"></li>
+</ul>
+</section>
+  </div>
+  <div class="slide hidden author-slide" id="slide-21">
     <section class="slide-content"><div class="author">
   <h1 class="name">Jeremy Lehman</h1>
     <h3 class="twitter">

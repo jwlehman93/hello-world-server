@@ -56,7 +56,7 @@ create file `index.js` and add the following:
 --
 
 #MongoDB
-##[](https://www.mongodb.com/download-center?jmp=nav#community)
+##https://www.mongodb.com/download-center?jmp=nav#community
 
 --
 
