@@ -42,6 +42,10 @@
 
 * Postman: 
   [Get it here](https://www.getpostman.com/)
+  
+###Finally...
+`git clone`
+https://github.com/Purdue-ACM-SIGAPP/hello-world-server.git`
 ###First Things First
 `git clone 
 https://github.com/Purdue-ACM-SIGAPP/hello-world-server.git`
