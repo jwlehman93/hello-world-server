@@ -52,6 +52,25 @@ create file `index.js` and add the following:
 
 --
 
+#MongoDB
+##[](https://www.mongodb.com/download-center?jmp=nav#community)
+
+--
+
+###Create data directory
+* mac
+  * `mkdir /data/db`
+  * `sudo chmod 0755 /data/db`
+  * `sudo chown $USER /data/db`
+* windows
+  * `md /data/db`
+
+###Starting the mongo service and connecting to it
+* `mongod` in a terminal
+* open new terminal and run `mongo`
+* type `help` to see what you can do
+
+
 
 
 
