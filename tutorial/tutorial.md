@@ -28,3 +28,14 @@ https://github.com/Purdue-ACM-SIGAPP/hello-world-server.git`
 #Starting a Node project
 ##`npm init`
 ![npm init](./npm_init.png "npm init")
+
+--
+
+###package.json
+`cat package.json`
+![package.json](./package_json.png "package.json")
+
+--
+###Install express
+`npm i -S express`
+
