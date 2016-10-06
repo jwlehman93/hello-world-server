@@ -1,38 +1,23 @@
-title: How to make a server
-author:
-  name: Jeremy Lehman
-  twitter: htmlehman
-style: style.css
-output: tutorial.html
-controls: true
-theme: sjaakvandenberg/cleaver-dark
-
---
 
 # Server 101
 ## How to be a backend master
 
---
 
 ###First Things First
 `git clone 
 https://github.com/Purdue-ACM-SIGAPP/hello-world-server.git`
 
---
 
-###Follow Along @
-####Open tutorial/tutorial.html
-
---
-
-#Starting a Node project
-##`npm init`
-![npm init](./npm_init.png "npm init")
-
---
+###Starting a Node project
+Run `npm init`
+It should look similar to this:
+![npm init](tutorial/npm_init.png "npm init")
+Just keep pressing enter, edit fields as you feel necessary
 
 ###package.json
 `cat package.json`
+
+It should look like this:
 ```
 {
   "name": "hello-world-server",
@@ -54,11 +39,9 @@ https://github.com/Purdue-ACM-SIGAPP/hello-world-server.git`
   "homepage": "https://github.com/Purdue-ACM-SIGAPP/hello-world-server#readme"
 }
 ```
---
 ###Install express
 `npm i -S express`
 
---
 ###Create your first server!
 create file `index.js` and add the following:
 ```javascript
@@ -75,10 +58,9 @@ app.listen(3000, function() {
 });
 module.exports = app;
 ```
---
 ###Run your server!
 `node index.js`
---
+
 ###Adding routes
 * `mkdir -p app/routes`
 * create file `index.js` and add the following:
@@ -96,7 +78,6 @@ router.get('/message', function(req, res) {
   rese.send('You asked for a message, so now you have got one!');
 });
 ```
---
 
 ###Add to index.js
 ```javascript
@@ -111,11 +92,10 @@ app.listen(3000, function() {
 });
 module.exports = app;
 ```
---
-#MongoDB
-##https://www.mongodb.com/download-center?jmp=nav#community
 
---
+##MongoDB
+https://www.mongodb.com/download-center?jmp=nav#community
+
 
 ###Create data directory
 * mac
@@ -130,7 +110,6 @@ module.exports = app;
 * open new terminal and run `mongo`
 * type `help` to see what you can do
 
---
 ###configs
 * create file `.env`
 * Add the following:
@@ -139,7 +118,6 @@ module.exports = app;
 PORT=XXXX
 MONGODB=localhost:XXXXX/DB
 ```
---
 
 ###Connect Mongo and the Server using mongoose
 * `npm i -S mongoose dotenv bodyparser`
@@ -163,10 +141,9 @@ connection.once('open', function() {
 /*app.listen, export*/
 ```
 
---
 ###Run it
 `node server.js`
---
+
 ###Create message model
 * `mkdir app/models`
 * create file `Message.js`
@@ -184,7 +161,7 @@ var messageSchema = new Schema({
 
 module.exports = mongoose.model('Message', messageSchema);
 ```
---
+
 
 ###Add messages
 * open `routes/index.js`
@@ -200,7 +177,6 @@ router.post('/messages', function(req, res, next) {
   })
 });
 ```
---
 ###Test it out
 * Download postman
 * make a post request to `localhost:PORT/messages`
@@ -213,14 +189,12 @@ router.post('/messages', function(req, res, next) {
   "room": "Hello, World"
 }
 ```
---
 
 ###Check in mongo
 * open your mongo shell again
 * type `use <DB>`
 * type `db.messages.find()`
 
---
 ###Get messages
 * open `routes/index.js` again
 * add the following (also remove our old `/message` route)
@@ -236,12 +210,10 @@ router.get('/messages', function(req, res, next) {
 });
 ```
 
---
 ###Check it out
 * node `index.js`
 * go to `localhost:PORT/messages`
 
---
 ###Last thing... Let's add a logger
 * `npm i -S morgan`
 * add the following to index.js
