@@ -20,8 +20,8 @@ https://github.com/Purdue-ACM-SIGAPP/hello-world-server.git`
 
 --
 
-#Follow Along @
-##[website]
+###Follow Along @
+####Open tutorial/tutorial.html
 
 --
 
