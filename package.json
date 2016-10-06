@@ -15,5 +15,8 @@
   "bugs": {
     "url": "https://github.com/Purdue-ACM-SIGAPP/hello-world-server/issues"
   },
-  "homepage": "https://github.com/Purdue-ACM-SIGAPP/hello-world-server#readme"
+  "homepage": "https://github.com/Purdue-ACM-SIGAPP/hello-world-server#readme",
+  "dependencies": {
+    "express": "^4.14.0"
+  }
 }

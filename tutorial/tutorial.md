@@ -39,3 +39,11 @@ https://github.com/Purdue-ACM-SIGAPP/hello-world-server.git`
 ###Install express
 `npm i -S express`
 
+--
+###Create your first server!
+![express initial](./express_init.png "express!!!!!")
+
+--
+
+
+
