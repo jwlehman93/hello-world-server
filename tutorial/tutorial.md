@@ -132,4 +132,8 @@ create file `index.js` and add the following:
 * go to `localhost:PORT/messages`
 
 --
+###Last thing... Let's add a logger
+* `npm i -S morgan`
+* add the following to index.js
+![logger](./logger.png "Logger")
 

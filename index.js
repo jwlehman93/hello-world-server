@@ -4,8 +4,10 @@ var express = require('express');
 var routes = require('./app/routes');
 var mongoose = require('mongoose');
 var bodyParser = require('body-parser');
+var logger = require('morgan');
 var app = express();
 
+app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: false}));
 
