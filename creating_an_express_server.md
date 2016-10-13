@@ -64,16 +64,16 @@ Create an `app` directory, and place a `routes` directory inside of it.
 Add the following to this **new** `index.js` file:
 
 ```javascript
-var express = require('express')
+var express = require('express');
 
-var router = express.Router()
+var router = express.Router();
 
 router.get('/', function(req, res) {
-  res.send('Hey, I'm the root route')
+  res.send('Hey, I am the root route');
 });
 
 router.get('/message', function(req, res) {
-  rese.send('You asked for a message, so now you have got one!');
+  res.send('You asked for a message, so now you have got one!');
 });
 
 module.exports = router;
@@ -86,7 +86,7 @@ Now we will add this new router to our root `index.js` file.
 
 **Note:** This should not be the file you were just editing, but the `index.js` file at the root of your project.
 ```javascript
-var express = require('express')
+var express = require('express');
 var routes = require('./app/routes');
 var app = express();
 
