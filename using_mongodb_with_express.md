@@ -41,7 +41,7 @@ First, we will install some dependencies.
 * Add the following to index.js (the previous code is represented as comments)
 
 ```javascript
-require('dontenv').config();
+require('dotenv').config();
 /*other requires*/
 var mongoose = require('mongoose');
 var bodyParser = require('body-parser');
