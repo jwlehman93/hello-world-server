@@ -54,7 +54,12 @@ connection.on('error', console.error.bind(console, 'connection error'));
 connection.once('open', function() {
   console.log('MongoDB is now connected');
 });
-/*app.listen, export app*/
+
+app.listen(process.env.PORT, function() {
+    console.log('Your server is running on port ' + process.env.PORT)
+});
+
+module.exports = app;
 ```
 
 ###Run it
@@ -131,7 +136,7 @@ module.exports = router;
 * add the following (also remove our old `/message` route)
 
 ```javascript
-/* previous routes (remove the get('/message' route))
+/* previous routes (remove the get('/message' route))*/
 router.get('/messages', function(req, res, next) {
   Message.find(function(err, messages) {
     if (err) {
