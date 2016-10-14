@@ -1,0 +1,22 @@
+{
+  "name": "hello-world-server",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jwlehman93/hello-world-server.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jwlehman93/hello-world-server/issues"
+  },
+  "homepage": "https://github.com/jwlehman93/hello-world-server#readme",
+  "dependencies": {
+    "express": "^4.14.0"
+  }
+}
