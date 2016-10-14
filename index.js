@@ -4,11 +4,13 @@ var express = require('express');
 var routes = require('./app/routes');
 var mongoose = require('mongoose');
 var bodyParser = require('body-parser');
+var logger = require('morgan');
 
 var app = express();
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: false}));
+app.use(logger('dev'));
 app.use('/', routes)
 
 var connection = mongoose.connect(process.env.MONGODB).connection;
